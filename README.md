@@ -88,7 +88,7 @@ catclip recon.txt | grep -i "admin"
 # Copy to clipboard only (hide sensitive output)
 catclip -c api_keys.txt
 
-# Save to file while copying to clipboard
+# Write to file while copying to clipboard
 catclip data.txt > output.txt
 
 # Interactive mode (type, then Ctrl+D)

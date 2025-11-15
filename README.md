@@ -127,27 +127,42 @@ catclip
 
 ## FAQ
 
-**Q: Why not just use an alias like `alias cpcat='tee >(pbcopy)'`?**  
-A: Three reasons:
+<details>
+<summary><b>Why not just use an alias like </b><code>alias cpcat='tee >(pbcopy)'</code>?</summary>
+Three reasons:
+
 1. You'd need different aliases per platform (`pbcopy`/`xclip`/`wl-copy`/`clip.exe`)
 2. Aliases don't persist on new systems — `catclip` installs once, works everywhere
 3. Process substitution `>(...)` isn't POSIX (requires bash/zsh)
 4. `catclip` is meant for quick, disposable environments (think remote shells, CTF boxes, or Docker containers) where you may not know which OS or clipboard utility is available
+</details>
 
-**Q: Can I pipe clipboard contents into other commands?**  
-A: Yes — that’s one of the most useful patterns: `catclip -p | jq .` or `catclip -p | hexdump -C`.
+<details>
+<summary><b>Can I pipe clipboard contents into other commands?</b></summary>
 
-**Q: Will catclip corrupt binary files?**  
-A: `catclip` will forward bytes to both stdout and the clipboard tool, but system clipboard managers are often text-oriented. If you need to avoid terminal binary output, use `--clip-only` to copy only.
+Yes — that’s one of the most useful patterns: `catclip -p | jq .` or `catclip -p | hexdump -C`.
+</details>
 
-**Q: Is piping the install script safe?**  
-A: Inspect before running:
+<details>
+<summary><b>Will catclip corrupt binary files?</b></summary>
+
+`catclip` will forward bytes to both stdout and the clipboard tool, but system clipboard managers are often text-oriented. If you need to avoid terminal binary output, use `--clip-only` to copy only.
+</details>
+
+<details>
+<summary><b>Is piping the install script safe?</b></summary>
+
+Inspect before running:
 ```bash
 curl -sL https://raw.githubusercontent.com/trash-pwnda/catclip/main/catclip.sh | less
 ```
+</details>
 
-**Q: Any security gotchas?**  
-A: Clipboard contents can be stored in clipboard histories or synced by OS services. `--clip-only` avoids terminal logs, but cannot control external clipboard history/syncing.
+<details>
+<summary><b>Any security gotchas?</b></summary>
+
+Clipboard contents can be stored in clipboard histories or synced by OS services. `--clip-only` avoids terminal logs, but cannot control external clipboard history/syncing.
+</details>
 
 ---
 
